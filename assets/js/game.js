@@ -7,11 +7,17 @@ var playerMoney = 10;
 console.log(playerName, playerAttack, playerHealth);
 
 
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
-var fight = function() {
+// Game States
+// "WIN" - Player robot has defeated all enemy-robots
+//    * Fight all enemy-robots
+//    * Defeat each enemy-robot
+// "LOSE" - Player robot's health is zero or less
+
+var fight = function(enemyName) {
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
 
     // if player chooses to fight, then fight
@@ -19,7 +25,7 @@ var fight = function() {
         // remove enemy's health by subtracting the amount set in the playerAttack variable
         enemyHealth = enemyHealth - playerAttack;
         console.log (
-            playerName + " attacked " + enemyName + ". " + enemyName + " now has " + " health remaining."
+            playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
         );
 
         // check enemy's health
@@ -60,8 +66,6 @@ var fight = function() {
 
 }
 
-fight();
-
-
-
-
+for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+}
